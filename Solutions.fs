@@ -6,12 +6,24 @@ let read(day: int) = File.ReadAllLines($@"challenges/{day}.txt")
 
 // Solutions
 let december1st =
+    // Part I
     let toArrayInt(array: string[]) = array |> Array.map Int32.Parse
+    let measurementsIncreased(array: int[]) = array
+                                            |> Array.pairwise
+                                            |> Array.filter(fun (current, next) -> current < next)
 
-    toArrayInt(read(1))
-    |> Array.pairwise
-    |> Array.filter(fun (current, next) -> current < next)
-    |> Array.length
+    let array = toArrayInt(read(1))
+
+    let result1 = array
+                |> (fun a -> measurementsIncreased(a))
+                |> Array.length
+    //Part II
+    let result2 = array
+                |> Array.windowed 3 |> Array.map(fun a -> a |> Array.sum)
+                |> (fun a -> measurementsIncreased(a))
+                |> Array.length
+
+    (result1, result2)
 
 let december2nd =
     let matcher(a: string[]) =
@@ -20,6 +32,7 @@ let december2nd =
         | a when a[0].Contains("down")    -> (0, a[1] |> Int32.Parse)
         | a when a[0].Contains("forward") -> (a[1] |> Int32.Parse, 0) 
         | _                               -> (0, 0)
+
     let resTuple =
         read(2)
         |> Array.map(fun s -> s.Split(" "))
@@ -28,6 +41,7 @@ let december2nd =
     fst resTuple * snd resTuple
 
 let december3rd =
+    // Part I
     let mostFrequest(array: int[]) =
         array
         |> Array.countBy id
@@ -55,7 +69,7 @@ let december3rd =
     
 [<EntryPoint>]
 let main args =
-    let input = args.[0]
+    let input = args[0]
     if (input = "1") then printf "%A" december1st
     else if (input = "2") then printf "%A" december2nd
     else if (input = "3") then printf "%A" december3rd
