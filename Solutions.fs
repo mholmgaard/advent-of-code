@@ -6,14 +6,14 @@ let read(day: int) = File.ReadAllLines($@"challenges/{day}.txt")
 
 // Solutions
 let december1st =
-    // Part I
     let toArrayInt(array: string[]) = array |> Array.map Int32.Parse
     let measurementsIncreased(array: int[]) = array
                                             |> Array.pairwise
                                             |> Array.filter(fun (current, next) -> current < next)
 
     let array = toArrayInt(read(1))
-
+    
+    // Part I
     let result1 = array
                 |> (fun a -> measurementsIncreased(a))
                 |> Array.length
