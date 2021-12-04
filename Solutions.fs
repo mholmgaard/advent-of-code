@@ -10,7 +10,7 @@ let december1st =
 
     toArrayInt(read(1))
     |> Array.pairwise
-    |> Array.filter(fun (current, next) -> current < next)
+    |> Array.filter ((<||) (<))
     |> Array.length
 
 let december2nd =
