@@ -12,7 +12,7 @@ let december1st =
                                             |> Array.filter(fun (current, next) -> current < next)
 
     let array = toArrayInt(read(1))
-    
+
     // Part I
     let result1 = array
                 |> (fun a -> measurementsIncreased(a))
@@ -31,7 +31,7 @@ let december2nd =
         | a when a[0].Contains("up")      -> (0, (a[1] |> Int32.Parse) * -1)
         | a when a[0].Contains("down")    -> (0, a[1] |> Int32.Parse)
         | a when a[0].Contains("forward") -> (a[1] |> Int32.Parse, 0) 
-        | _                               -> (0, 0)
+        | _                               -> raise(NotImplementedException())
 
     let resTuple =
         read(2)
