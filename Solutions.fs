@@ -16,8 +16,7 @@ let december2nd =
         | _                               -> (0, 0)
     let resTuple =
         File.ReadAllLines(@"challenges/2.txt")
-        |> Array.map(fun s -> s.Split(" "))
-        |> Array.map(fun arr -> matcher arr)
+        |> Array.map(fun s -> matcher s.Split(" "))
         |> Array.fold(fun (x, y)(z, w) -> (x + z, y + w)) (0, 0)
     fst resTuple * snd resTuple
 
