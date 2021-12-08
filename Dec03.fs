@@ -3,7 +3,6 @@
 open System
 
 let result(input: string[]) =
-    // Part I
     let mostFrequest(array: int[]) =
         array
         |> Array.countBy id

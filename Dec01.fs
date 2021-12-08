@@ -10,11 +10,10 @@ let result(input: string[]) =
 
     let array = toArrayInt(input)
 
-    // Part I
     let result1 = array
                 |> measurementsIncreased
                 |> Array.length
-    //Part II
+
     let result2 = array
                 |> Array.windowed 3 |> Array.map(Array.sum)
                 |> measurementsIncreased
