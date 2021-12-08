@@ -12,12 +12,12 @@ let result(input: string[]) =
 
     // Part I
     let result1 = array
-                |> (fun a -> measurementsIncreased(a))
+                |> measurementsIncreased
                 |> Array.length
     //Part II
     let result2 = array
-                |> Array.windowed 3 |> Array.map(fun a -> a |> Array.sum)
-                |> (fun a -> measurementsIncreased(a))
+                |> Array.windowed 3 |> Array.map(Array.sum)
+                |> measurementsIncreased
                 |> Array.length
 
     (result1, result2)

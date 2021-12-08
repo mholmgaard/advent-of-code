@@ -13,7 +13,7 @@ let result(input: string[]) =
     let toSplitIntArray(array: string[]) = array |> Array.map(fun s -> s.ToCharArray()|> Array.map(fun i -> int(Char.GetNumericValue(i))))
 
     let array = toSplitIntArray(input)
-    let gammaRateBinaryArray = array |> Array.transpose |> Array.map(fun a -> mostFrequest(a))
+    let gammaRateBinaryArray = array |> Array.transpose |> Array.map(mostFrequest)
 
     let flipBit(bit: int) =
         match bit with
